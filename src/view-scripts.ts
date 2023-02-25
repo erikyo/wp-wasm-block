@@ -21,7 +21,7 @@ onload = () => {
 	document.querySelectorAll( '.block-wasm input.button' ).forEach( ( el ) => {
 		el.onclick = () => {
 			const input = el.previousSibling;
-			input.value = api.fib( input.value );
+			input.value = parseInt(api.fib( input.value ), 10);
 		};
 	} );
 };
