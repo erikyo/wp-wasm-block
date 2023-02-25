@@ -40,7 +40,7 @@ registerBlockType( jsonData.name, {
 		num: {
 			type: 'number',
 			source: 'value',
-			default: 1,
+			default: 7,
 		},
 	},
 } );

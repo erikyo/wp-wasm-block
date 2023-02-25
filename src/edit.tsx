@@ -15,7 +15,21 @@ function decodeCharArray( test, buffer ) {
 	return mytext;
 }
 
-export function loadModule() {}
+async function getModule() {
+	return loader
+		.instantiate(
+			fetch(
+				'http://localhost:8888/wp-content/plugins/wp-wasm-block/build/hello.wasm'
+			),
+			{}
+		)
+		.then( ( module ) => {
+			console.log( 'wasm module loaded' );
+			return module;
+		} );
+}
+
+export let api = null;
 
 /**
  * The edit function describes the structure of your block in the context of the editor.
@@ -29,32 +43,20 @@ export default function Edit( {
 	attributes,
 	setAttributes,
 }: BlockEditProps< TextDef > ): JSX.Element {
-	let api = null;
 	const [ message, setMessage ] = useState( 'no message' );
 	const [ value, setValue ] = useState( attributes.num );
 
 	useEffect( () => {
-		async function getModule() {
-			return loader
-				.instantiate(
-					fetch(
-						'http://localhost:8888/wp-content/plugins/wasm-block/build/hello.wasm'
-					),
-					{}
-				)
-				.then( ( module ) => {
-					console.log( 'wasm module loaded' );
+		if ( ! api )
+			getModule().then( ( Module ) => {
+				api = Module.exports;
 
-					const msg = decodeCharArray(
-						module.exports.hello(),
-						new Uint8Array( module.exports.memory.buffer )
-					);
-					setMessage( msg + attributes.message );
-					return module.exports.fib;
-				} );
-		}
-
-		api = getModule();
+				const msg = decodeCharArray(
+					api.hello(),
+					new Uint8Array( api.memory.buffer )
+				);
+				setMessage( msg );
+			} );
 	}, [] );
 
 	return (
@@ -67,12 +69,12 @@ export default function Edit( {
 				}
 			/>
 
-			<TextControl label="input-fibonacci" value={ value } />
+			<TextControl label="input-fibonacci" value={ value } onChange={(v) => setValue(v)}/>
 
 			<Button
 				text={ 'Apply fibonacci' }
 				variant="secondary"
-				onClick={ () => setValue( api( value ) ) }
+				onClick={ () => setValue( api.fib( value ) ) }
 			/>
 		</div>
 	);
