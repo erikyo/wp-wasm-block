@@ -5,6 +5,7 @@
 	"description": "A wp-block boilerplate in typescript + wasm component",
 	"keywords": [ "wp-block", "boilerplate", "wasm" ],
 	"category": "media",
+	"viewScript": "file:./build/view-scripts.js",
 	"editorScript": "file:./build/wasm-block.js",
 	"editorStyle": "file:./build/wasm-block.css",
 	"style": "file:./build/style-wasm-block.css"

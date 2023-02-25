@@ -5,7 +5,7 @@ import './style/style.scss';
 
 import { useBlockProps } from '@wordpress/block-editor';
 import type { BlockSaveProps } from '@wordpress/blocks';
-import { useState } from 'react';
+import { __ } from '@wordpress/i18n';
 
 import { TextDef } from './types';
 
@@ -23,9 +23,13 @@ function Save( { attributes }: BlockSaveProps< TextDef > ): JSX.Element {
 
 	return (
 		<div { ...blockProps }>
-			{ ' ' }
-			{ attributes.message }
-			<input value={ attributes.number } />
+			<p>{ attributes.message }</p>
+			<input value={ attributes.num } />
+			<input
+				type={ 'button' }
+				className={ 'button primary' }
+				value={ __( 'Apply fibonacci', 'boilerplate' ) }
+			/>
 		</div>
 	);
 }

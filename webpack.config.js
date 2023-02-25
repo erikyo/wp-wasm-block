@@ -7,6 +7,7 @@ module.exports = {
 	...defaultConfig,
 	entry: {
 		'wasm-block': path.resolve( process.cwd(), `src/index` ),
+		'view-scripts': path.resolve( process.cwd(), `src/view-scripts` ),
 	},
 	devtool: 'inline-source-map',
 	module: {

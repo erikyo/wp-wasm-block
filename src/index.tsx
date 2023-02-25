@@ -1,4 +1,4 @@
-import { BlockAttributes, BlockConfiguration, registerBlockType } from '@wordpress/blocks';
+import { registerBlockType } from '@wordpress/blocks';
 
 /* adds styles to bundle */
 import './style/style-admin.scss';
@@ -7,6 +7,7 @@ import blockConfig from '../block.json';
 
 import Edit from './edit';
 import Save from './save';
+import { blockIcon } from './constants';
 
 const jsonData = blockConfig;
 
@@ -21,7 +22,7 @@ registerBlockType( jsonData.name, {
 	 * @see ./save.js
 	 */
 	save: Save,
-	icon: 'universal-access-alt',
+	icon: blockIcon,
 	supports: {
 		align: true,
 		className: true,
@@ -34,12 +35,10 @@ registerBlockType( jsonData.name, {
 	attributes: {
 		message: {
 			type: 'string',
-			source: 'text',
 			default: '',
 		},
 		num: {
 			type: 'number',
-			source: 'value',
 			default: 7,
 		},
 	},
