@@ -1,4 +1,4 @@
-import { registerBlockType } from '@wordpress/blocks';
+import { BlockAttributes, BlockConfiguration, registerBlockType } from '@wordpress/blocks';
 
 /* adds styles to bundle */
 import './style/style-admin.scss';
@@ -36,6 +36,11 @@ registerBlockType( jsonData.name, {
 			type: 'string',
 			source: 'text',
 			default: '',
+		},
+		num: {
+			type: 'number',
+			source: 'value',
+			default: 1,
 		},
 	},
 } );

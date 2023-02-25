@@ -5,7 +5,7 @@
 	"contributors": [
 		"Erik Golinelli <erik@codekraft.it> (https://codekraft.it/)"
 	],
-  "homepage": "https://github.com/erikyo/typescript-wp-block#readme",
+	"homepage": "https://github.com/erikyo/typescript-wp-block#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/erikyo/typescript-wp-block.git"
@@ -38,13 +38,13 @@
 		"build-wasm-win": "docker run --rm -v %cd%/src/wasm:/src/wasm emscripten/emsdk /src/wasm/build.sh"
 	},
 	"devDependencies": {
+		"@assemblyscript/loader": "^0.27.0",
 		"@babel/core": "^7.21.0",
 		"@babel/preset-typescript": "^7.21.0",
 		"@jest/globals": "^29.4.3",
 		"@types/babel__core": "^7.20.0",
 		"@types/expect-puppeteer": "^5.0.3",
 		"@types/jest": "^29.4.0",
-		"@types/module-deps": "^29.4.0",
 		"@types/jest-environment-puppeteer": "^5.0.3",
 		"@types/node": "^18.14.1",
 		"@types/puppeteer": "^7.0.4",
@@ -67,6 +67,7 @@
 		"eslint-import-resolver-typescript": "^3.5.3",
 		"eslint-plugin-import": "^2.27.5",
 		"jest-puppeteer": "^6.2.0",
+		"copy-webpack-plugin": "^11.0.0",
 		"typescript": "^4.9.5"
 	},
 	"peerDependencies": {
@@ -79,5 +80,5 @@
 	},
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
-	]
+	],
 }

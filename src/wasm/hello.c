@@ -2,9 +2,8 @@
 #include <stdio.h>
 
 EMSCRIPTEN_KEEPALIVE
-int hello() {
-    printf("Hello World\n");
-    return 0;
+char* hello() {
+   return "howdy Wordpress!";
 }
 
 EMSCRIPTEN_KEEPALIVE

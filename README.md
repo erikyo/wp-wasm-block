@@ -1,4 +1,4 @@
-# Typescript WP-Block boilerplate
+# WASM WP-Block boilerplate
 
 > A clean boilerplate for WordPress Blocks (Gutenberg Editor) 
 
@@ -38,7 +38,6 @@ and you are 🎉 Done!
 https://developer.wordpress.org/block-editor/getting-started/
 
 ---
-
 
 ### LINKS
 - Jest - https://jestjs.io/docs/getting-started

@@ -21,7 +21,7 @@ module.exports = {
 				test: /\.wasm$/,
 				loader: 'file-loader',
 				options: {
-					publicPath: 'src/wasm/',
+					publicPath: './src/wasm/',
 				},
 			},
 		],
@@ -37,7 +37,7 @@ module.exports = {
 			patterns: [
 				{
 					from: 'src/wasm/hello.wasm',
-					to: '[name].[ext]',
+					to: '[name][ext]',
 				},
 			],
 		} ),
