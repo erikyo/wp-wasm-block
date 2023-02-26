@@ -12,6 +12,7 @@ module.exports = {
 	devtool: 'inline-source-map',
 	module: {
 		rules: [
+			...defaultConfig.module.rules,
 			{
 				test: /\.[tjmc]sx?$/,
 				use: [ 'babel-loader' ],
@@ -20,10 +21,8 @@ module.exports = {
 			{
 				// https://github.com/webpack/webpack/issues/7352
 				test: /\.wasm$/,
+				type: 'javascript/auto',
 				loader: 'file-loader',
-				options: {
-					publicPath: './src/wasm/',
-				},
 			},
 		],
 		...defaultConfig.module,

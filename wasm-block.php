@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Typescript WP Block Boilerplate
+ * Plugin Name: WASM WP Block Boilerplate
  * Plugin URI: https://github.com/erikyo/typescript-wp-block
  * Description: WordPress block boilerplate in typescript
  * Version: 0.0.1

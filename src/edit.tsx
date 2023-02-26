@@ -1,4 +1,3 @@
-import loader from '@assemblyscript/loader';
 import { useBlockProps } from '@wordpress/block-editor';
 import type { BlockEditProps } from '@wordpress/blocks';
 import { Button, TextControl } from '@wordpress/components';
@@ -6,7 +5,8 @@ import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { TextDef } from './types';
-import { decodeCharArray, getModule } from './wasmLoader';
+import { Module } from './wasm/hello.js';
+import { decodeCharArray, instantiateModule } from './wasmLoader';
 
 export let api: any | null = null;
 
@@ -24,9 +24,10 @@ export default function Edit( {
 }: BlockEditProps< TextDef > ): JSX.Element {
 	const { message, num } = attributes;
 
+	/* A hook that is called when the component is mounted. */
 	useEffect( () => {
 		if ( ! api )
-			getModule()
+			instantiateModule()
 				.then( ( Module ) => {
 					api = Module.exports;
 
